@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="TemplateData/favicon.ico">
   <link rel="stylesheet" href="TemplateData/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 </head>
 
 <body style="overflow: hidden">
@@ -59,11 +59,11 @@
     }
 
     var buildUrl = "Build";
-    var loaderUrl = buildUrl + "/1.loader.js";
+    var loaderUrl = buildUrl + "/Dot Connect.loader.js";
     var config = {
-      dataUrl: buildUrl + "/1.data",
-      frameworkUrl: buildUrl + "/1.framework.js",
-        codeUrl: buildUrl + "/1.wasm",
+      dataUrl: buildUrl + "/Dot Connect.data",
+      frameworkUrl: buildUrl + "/Dot Connect.framework.js",
+        codeUrl: buildUrl + "/Dot Connect.wasm",
         streamingAssetsUrl: "StreamingAssets",
       companyName: "Finik",
     productName: "Eta shtuka poka ne rabotaet, nu i ladno",
@@ -117,6 +117,7 @@
         })
         .then( (data) => {
           // Запись отправлена на стену
+          unityInstance.SendMessage('VKManager', 'GiveHint', JSON.stringify(data.result));
           console.log(`Идентификатор записи: ${data.post_id}`);
         })
         .catch( (e) => {
@@ -131,11 +132,13 @@
       })
       .then( (data) => {
         if (data.success) {
+
           // Приглашение выслано ...
           // ...
           
           // Эти пользователи не получили сообщение
           // console.log('Приглашение не было отослано', data.notSentIds );
+          unityInstance.SendMessage('VKManager', 'GiveHint', JSON.stringify(data.result));
         }
       })
       .catch( (e) => { 
@@ -153,4 +156,5 @@
     });
   </script>
 </body>
+
 </html>
