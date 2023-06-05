@@ -111,7 +111,7 @@
 
     function share ()
     {
-      bridge.send('VKWebAppShowWallPostBox', {
+      vkBridge.send('VKWebAppShowWallPostBox', {
           message: 'Я соединяю точки, и готов пройти все уровни, посоревнуемся?',
           attachment: 'https://vk.com/app51667123_387202353',
         })
@@ -126,7 +126,7 @@
 
     function friendInvite ()
     {
-      bridge.send('VKWebAppShowInviteBox', { 
+      vkBridge.send('VKWebAppShowInviteBox', { 
       
       })
       .then( (data) => {
